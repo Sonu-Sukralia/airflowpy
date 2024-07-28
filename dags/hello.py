@@ -1,34 +1,29 @@
 from airflow import DAG
-from airflow.operators.bash import DashOperator
+from airflow.operators.bash import BashOperator
 from datetime import datetime, timedelta
 
 default_args = {
-    'owner': 'datamasterylab',
-    'start_date': datetime(year:2024,month:1,dat:25),
+    'owner': 'datamasterylab.com',
+    'start_date': datetime(2024, 1, 25),
     'catchup': False
-    
 }
 
 dag = DAG(
-    dag_id: 'hello_world',
-    default_args= default_args,
-    schedule= timedelta(days=1)
+    'hello_world',
+    default_args = default_args,
+    schedule=timedelta(days=1)
 )
 
-
-
-t1 = DashOperator(
-    task_id = 'hello world',
-    bash_command= 'echo "hello world"',
-    dag= dag
-
+t1 = BashOperator(
+    task_id = 'hello_world',
+    bash_command='echo "Hello World"',
+    dag = dag
 )
 
-t2 = DashOperator(
-    task_id = 'hello dml',
-    bash_command= 'echo "hello data mastery lab"',
-    dag= dag
-
+t2 = BashOperator(
+    task_id = 'hello_dml',
+    bash_command='echo "Hello Data Mastery Lab"',
+    dag = dag
 )
 
-
+t1 >> t2

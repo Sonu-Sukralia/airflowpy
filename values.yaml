@@ -1,0 +1,13 @@
+fernetKey: NWk5bW56emx2YzdpNWYyN1RFTHhWQXNuSnZnZEtHdzA=
+webserverSecretKey: 880e103a167c3a47b44dbd8151eabe4e
+executor: "KubernetesExecutor"
+
+dags:
+  gitSync:
+    enabled: true
+    repo: https://github.com/Sonu-Sukralia/airflowpy.git
+    branch: main
+    rev: HEAD
+    depth: 1
+    maxFailures: 0
+    subPath: "dags"
