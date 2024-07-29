@@ -1,0 +1,1000 @@
+  961      image: kubeshark/pf-ring-module:all
+  962      unloadOnDestroy: false
+  963    telemetry:
+  964      enabled: true
+  965    defaultFilter: ""
+  966    replayDisabled: false
+  967    scriptingDisabled: false
+  968    targetedPodsUpdateDisabled: false
+  969    recordingDisabled: false
+  970    capabilities:
+  971      networkCapture:
+  972      - NET_RAW
+  973      - NET_ADMIN
+  974      serviceMeshCapture:
+  975      - SYS_ADMIN
+  976      - SYS_PTRACE
+  977      - DAC_OVERRIDE
+  978      kernelModule:
+  979      - SYS_MODULE
+  980      ebpfCapture:
+  981      - SYS_ADMIN
+  982      - SYS_PTRACE
+  983      - SYS_RESOURCE
+  984      - IPC_LOCK
+  985    globalFilter: ""
+  986    metrics:
+  987      port: 49100
+  988    misc:
+  989      jsonTTL: 5m
+  990      pcapTTL: 10s
+  991      pcapErrorTTL: 60s
+  992      trafficSampleRate: 100
+  993      tcpStreamChannelTimeoutMs: 10000
+  994      tcpStreamChannelTimeoutShow: false
+  995      disableCgroupIdResolution: false
+  996  logs:
+  997    file: ""
+  998    grep: ""
+  999  kube:
+ 1000    configPath: ""
+ 1001    context: ""
+ 1002  dumpLogs: false
+ 1003  headless: false
+ 1004  license: ""
+ 1005  cloudLicenseEnabled: true
+ 1006  scripting:
+ 1007    env: {}
+ 1008    source: ""
+ 1009    watchScripts: true
+ 1010  timezone: ""
+ 1011  pi@raspberrypi:~ $ cd HOME/.kubeshark/config.yaml.
+ 1012  -bash: cd: HOME/.kubeshark/config.yaml.: No such file or directory
+ 1013  pi@raspberrypi:~ $ cd home/
+ 1014  -bash: cd: home/: No such file or directory
+ 1015  pi@raspberrypi:~ $ cd /home
+ 1016  pi@raspberrypi:/home $ ls
+ 1017  pi
+ 1018  pi@raspberrypi:/home $ cd ..
+ 1019  pi@raspberrypi:/ $ ls
+ 1020  bin  boot  DATA  dev  etc  home  lib  lost+found  media  mnt  NAS  opt  proc  root  Root  run  sbin  snap  srv  sys  tmp  usr  var
+ 1021  pi@raspberrypi:/ $ cd home
+ 1022  pi@raspberrypi:/home $ ls
+ 1023  pi
+ 1024  pi@raspberrypi:/home $ cd pi
+ 1025  pi@raspberrypi:~ $ ls
+ 1026   Downloads                                                                              history_Feb_2024                  nohup.out
+ 1027   EDA_Supermarket_Python-main.zip                                                        ht1                               pod1.yml
+ 1028  'first jn test1.ipynb'                                                                  jn.sh                             pod_deployment.yaml
+ 1029  '[FreeCourseSite.com] Udemy - Docker & Kubernetes The Practical Guide [2022 Edition]'   jupyter                           pod_service.yml
+ 1030   history_backup                                                                         ML                                pod.yaml
+ 1031   history_backup26aug2023                                                                ngrok                            'Practical Kubernetes Guide'
+ 1032   history_backup26aug23                                                                  ngrok.sh                          systemd-ngrok
+ 1033   history_backup8sep2023                                                                 ngrok.sh.save                     Titanic_ml
+ 1034   history_backuptest                                                                     ngrok.sh.save.1                   Titanic_ML-main.zip
+ 1035   history_bkp_6Jun_2024                                                                  ngrok-v3-stable-linux-arm64.tgz   t.txt
+ 1036  pi@raspberrypi:~ $ nano pod_service.yml
+ 1037  pi@raspberrypi:~ $ kubectl get all -A
+ 1038  NAMESPACE     NAME                                          READY   STATUS             RESTARTS        AGE
+ 1039  kube-system   pod/helm-install-traefik-crd-rc64q            0/1     Completed          0               40d
+ 1040  kube-system   pod/helm-install-traefik-dqth5                0/1     Completed          1               40d
+ 1041  kube-system   pod/local-path-provisioner-6c86858495-45j7f   1/1     Running            8 (3h35m ago)   40d
+ 1042  kube-system   pod/coredns-6799fbcd5-4wc6t                   1/1     Running            7 (3h35m ago)   40d
+ 1043  kube-system   pod/traefik-f4564c4f4-4jhgn                   1/1     Running            7 (3h35m ago)   40d
+ 1044  kube-system   pod/metrics-server-54fd9b65b-26mb6            1/1     Running            7 (3h35m ago)   40d
+ 1045  kube-system   pod/svclb-traefik-7c713505-2gw68              2/2     Running            8 (3h34m ago)   40d
+ 1046  kube-system   pod/svclb-traefik-7c713505-vpqsm              2/2     Running            8 (3h34m ago)   40d
+ 1047  default       pod/kubeshark-hub-6677c548bd-frsnd            1/1     Running            0               26m
+ 1048  default       pod/kubeshark-front-68b55cc855-zzvmt          1/1     Running            0               26m
+ 1049  default       pod/kubeshark-worker-daemon-set-djs9x         0/2     Evicted            0               9m4s
+ 1050  default       pod/kubeshark-worker-daemon-set-wjhdh         1/2     CrashLoopBackOff   9 (3m47s ago)   26m
+ 1051  default       pod/kubeshark-worker-daemon-set-k4gw7         1/2     CrashLoopBackOff   9 (3m46s ago)   26m
+ 1052  kube-system   pod/svclb-traefik-7c713505-mcnck              0/2     Evicted            0               2m44s
+ 1053  NAMESPACE     NAME                               TYPE           CLUSTER-IP      EXTERNAL-IP                     PORT(S)                      AGE
+ 1054  kube-system   service/kube-dns                   ClusterIP      10.43.0.10      <none>                          53/UDP,53/TCP,9153/TCP       40d
+ 1055  kube-system   service/metrics-server             ClusterIP      10.43.72.237    <none>                          443/TCP                      40d
+ 1056  kube-system   service/traefik                    LoadBalancer   10.43.141.151   192.168.29.169,192.168.29.207   80:32073/TCP,443:31162/TCP   40d
+ 1057  default       service/kubernetes                 ClusterIP      10.43.0.1       <none>                          443/TCP                      69m
+ 1058  default       service/kubeshark-front            ClusterIP      10.43.32.157    <none>                          80/TCP                       26m
+ 1059  default       service/kubeshark-worker-metrics   ClusterIP      10.43.205.134   <none>                          49100/TCP                    26m
+ 1060  default       service/kubeshark-hub              ClusterIP      10.43.247.13    <none>                          80/TCP                       26m
+ 1061  NAMESPACE     NAME                                         DESIRED   CURRENT   READY   UP-TO-DATE   AVAILABLE   NODE SELECTOR   AGE
+ 1062  default       daemonset.apps/kubeshark-worker-daemon-set   3         3         0       3            0           <none>          26m
+ 1063  kube-system   daemonset.apps/svclb-traefik-7c713505        3         3         2       3            2           <none>          40d
+ 1064  NAMESPACE     NAME                                     READY   UP-TO-DATE   AVAILABLE   AGE
+ 1065  kube-system   deployment.apps/coredns                  1/1     1            1           40d
+ 1066  kube-system   deployment.apps/local-path-provisioner   1/1     1            1           40d
+ 1067  kube-system   deployment.apps/traefik                  1/1     1            1           40d
+ 1068  kube-system   deployment.apps/metrics-server           1/1     1            1           40d
+ 1069  default       deployment.apps/kubeshark-hub            1/1     1            1           26m
+ 1070  default       deployment.apps/kubeshark-front          1/1     1            1           26m
+ 1071  NAMESPACE     NAME                                                DESIRED   CURRENT   READY   AGE
+ 1072  kube-system   replicaset.apps/coredns-6799fbcd5                   1         1         1       40d
+ 1073  kube-system   replicaset.apps/local-path-provisioner-6c86858495   1         1         1       40d
+ 1074  kube-system   replicaset.apps/traefik-f4564c4f4                   1         1         1       40d
+ 1075  kube-system   replicaset.apps/metrics-server-54fd9b65b            1         1         1       40d
+ 1076  default       replicaset.apps/kubeshark-hub-6677c548bd            1         1         1       26m
+ 1077  default       replicaset.apps/kubeshark-front-68b55cc855          1         1         1       26m
+ 1078  NAMESPACE     NAME                                 COMPLETIONS   DURATION   AGE
+ 1079  kube-system   job.batch/helm-install-traefik-crd   1/1           101s       40d
+ 1080  kube-system   job.batch/helm-install-traefik       1/1           109s       40d
+ 1081  pi@raspberrypi:~ $ kubectl get all
+ 1082  NAME                                    READY   STATUS             RESTARTS        AGE
+ 1083  pod/kubeshark-hub-6677c548bd-frsnd      1/1     Running            0               26m
+ 1084  pod/kubeshark-front-68b55cc855-zzvmt    1/1     Running            0               26m
+ 1085  pod/kubeshark-worker-daemon-set-djs9x   0/2     Evicted            0               9m14s
+ 1086  pod/kubeshark-worker-daemon-set-wjhdh   1/2     CrashLoopBackOff   9 (3m57s ago)   26m
+ 1087  pod/kubeshark-worker-daemon-set-k4gw7   1/2     CrashLoopBackOff   9 (3m56s ago)   26m
+ 1088  NAME                               TYPE        CLUSTER-IP      EXTERNAL-IP   PORT(S)     AGE
+ 1089  service/kubernetes                 ClusterIP   10.43.0.1       <none>        443/TCP     69m
+ 1090  service/kubeshark-front            ClusterIP   10.43.32.157    <none>        80/TCP      26m
+ 1091  service/kubeshark-worker-metrics   ClusterIP   10.43.205.134   <none>        49100/TCP   26m
+ 1092  service/kubeshark-hub              ClusterIP   10.43.247.13    <none>        80/TCP      26m
+ 1093  NAME                                         DESIRED   CURRENT   READY   UP-TO-DATE   AVAILABLE   NODE SELECTOR   AGE
+ 1094  daemonset.apps/kubeshark-worker-daemon-set   3         3         0       3            0           <none>          26m
+ 1095  NAME                              READY   UP-TO-DATE   AVAILABLE   AGE
+ 1096  deployment.apps/kubeshark-hub     1/1     1            1           26m
+ 1097  deployment.apps/kubeshark-front   1/1     1            1           26m
+ 1098  NAME                                         DESIRED   CURRENT   READY   AGE
+ 1099  replicaset.apps/kubeshark-hub-6677c548bd     1         1         1       26m
+ 1100  replicaset.apps/kubeshark-front-68b55cc855   1         1         1       26m
+ 1101  pi@raspberrypi:~ $ kubectl get pods
+ 1102  NAME                                READY   STATUS             RESTARTS        AGE
+ 1103  kubeshark-hub-6677c548bd-frsnd      1/1     Running            0               26m
+ 1104  kubeshark-front-68b55cc855-zzvmt    1/1     Running            0               26m
+ 1105  kubeshark-worker-daemon-set-djs9x   0/2     Evicted            0               9m40s
+ 1106  kubeshark-worker-daemon-set-wjhdh   1/2     CrashLoopBackOff   9 (4m23s ago)   26m
+ 1107  kubeshark-worker-daemon-set-k4gw7   1/2     CrashLoopBackOff   9 (4m22s ago)   26m
+ 1108  pi@raspberrypi:~ $ kubectl get all
+ 1109  NAME                                    READY   STATUS             RESTARTS        AGE
+ 1110  pod/kubeshark-hub-6677c548bd-frsnd      1/1     Running            0               27m
+ 1111  pod/kubeshark-front-68b55cc855-zzvmt    1/1     Running            0               27m
+ 1112  pod/kubeshark-worker-daemon-set-djs9x   0/2     Evicted            0               10m
+ 1113  pod/kubeshark-worker-daemon-set-wjhdh   1/2     CrashLoopBackOff   9 (4m49s ago)   27m
+ 1114  pod/kubeshark-worker-daemon-set-k4gw7   1/2     CrashLoopBackOff   9 (4m48s ago)   27m
+ 1115  NAME                               TYPE        CLUSTER-IP      EXTERNAL-IP   PORT(S)     AGE
+ 1116  service/kubernetes                 ClusterIP   10.43.0.1       <none>        443/TCP     70m
+ 1117  service/kubeshark-front            ClusterIP   10.43.32.157    <none>        80/TCP      27m
+ 1118  service/kubeshark-worker-metrics   ClusterIP   10.43.205.134   <none>        49100/TCP   27m
+ 1119  service/kubeshark-hub              ClusterIP   10.43.247.13    <none>        80/TCP      27m
+ 1120  NAME                                         DESIRED   CURRENT   READY   UP-TO-DATE   AVAILABLE   NODE SELECTOR   AGE
+ 1121  daemonset.apps/kubeshark-worker-daemon-set   3         3         0       3            0           <none>          27m
+ 1122  NAME                              READY   UP-TO-DATE   AVAILABLE   AGE
+ 1123  deployment.apps/kubeshark-hub     1/1     1            1           27m
+ 1124  deployment.apps/kubeshark-front   1/1     1            1           27m
+ 1125  NAME                                         DESIRED   CURRENT   READY   AGE
+ 1126  replicaset.apps/kubeshark-hub-6677c548bd     1         1         1       27m
+ 1127  replicaset.apps/kubeshark-front-68b55cc855   1         1         1       27m
+ 1128  pi@raspberrypi:~ $ kubectl delete kubeshark-hub
+ 1129  error: the server doesn't have a resource type "kubeshark-hub"
+ 1130  pi@raspberrypi:~ $ kubectl delete deploy kubeshark-front
+ 1131  deployment.apps "kubeshark-front" deleted
+ 1132  pi@raspberrypi:~ $ kubectl delete deploy kubeshark-hub
+ 1133  deployment.apps "kubeshark-hub" deleted
+ 1134  pi@raspberrypi:~ $ kubectl get all
+ 1135  NAME                                    READY   STATUS             RESTARTS       AGE
+ 1136  pod/kubeshark-worker-daemon-set-djs9x   0/2     Evicted            0              11m
+ 1137  pod/kubeshark-worker-daemon-set-wjhdh   1/2     CrashLoopBackOff   10 (39s ago)   28m
+ 1138  pod/kubeshark-worker-daemon-set-k4gw7   1/2     CrashLoopBackOff   10 (36s ago)   28m
+ 1139  NAME                               TYPE        CLUSTER-IP      EXTERNAL-IP   PORT(S)     AGE
+ 1140  service/kubernetes                 ClusterIP   10.43.0.1       <none>        443/TCP     71m
+ 1141  service/kubeshark-front            ClusterIP   10.43.32.157    <none>        80/TCP      28m
+ 1142  service/kubeshark-worker-metrics   ClusterIP   10.43.205.134   <none>        49100/TCP   28m
+ 1143  service/kubeshark-hub              ClusterIP   10.43.247.13    <none>        80/TCP      28m
+ 1144  NAME                                         DESIRED   CURRENT   READY   UP-TO-DATE   AVAILABLE   NODE SELECTOR   AGE
+ 1145  daemonset.apps/kubeshark-worker-daemon-set   3         3         0       3            0           <none>          28m
+ 1146  pi@raspberrypi:~ $ kubectl delete sev kubeshark-front
+ 1147  error: the server doesn't have a resource type "sev"
+ 1148  pi@raspberrypi:~ $ kubectl delete srv kubeshark-front
+ 1149  error: the server doesn't have a resource type "srv"
+ 1150  pi@raspberrypi:~ $ kubectl delete svc kubeshark-front
+ 1151  service "kubeshark-front" deleted
+ 1152  pi@raspberrypi:~ $ kubectl delete svc kubeshark-worker-metrics
+ 1153  service "kubeshark-worker-metrics" deleted
+ 1154  pi@raspberrypi:~ $ kubectl delete svc kubeshark-hub
+ 1155  service "kubeshark-hub" deleted
+ 1156  pi@raspberrypi:~ $ kubectl get all
+ 1157  NAME                                    READY   STATUS             RESTARTS         AGE
+ 1158  pod/kubeshark-worker-daemon-set-djs9x   0/2     Evicted            0                12m
+ 1159  pod/kubeshark-worker-daemon-set-wjhdh   1/2     CrashLoopBackOff   10 (2m16s ago)   29m
+ 1160  pod/kubeshark-worker-daemon-set-k4gw7   1/2     CrashLoopBackOff   10 (2m13s ago)   29m
+ 1161  NAME                 TYPE        CLUSTER-IP   EXTERNAL-IP   PORT(S)   AGE
+ 1162  service/kubernetes   ClusterIP   10.43.0.1    <none>        443/TCP   73m
+ 1163  NAME                                         DESIRED   CURRENT   READY   UP-TO-DATE   AVAILABLE   NODE SELECTOR   AGE
+ 1164  daemonset.apps/kubeshark-worker-daemon-set   3         3         0       3            0           <none>          29m
+ 1165  pi@raspberrypi:~ $ kubectl get pods
+ 1166  NAME                                READY   STATUS             RESTARTS         AGE
+ 1167  kubeshark-worker-daemon-set-djs9x   0/2     Evicted            0                12m
+ 1168  kubeshark-worker-daemon-set-wjhdh   1/2     CrashLoopBackOff   10 (2m35s ago)   30m
+ 1169  kubeshark-worker-daemon-set-k4gw7   1/2     CrashLoopBackOff   10 (2m32s ago)   30m
+ 1170  pi@raspberrypi:~ $ kuberctl delete pod kubeshark-worker-daemon-set-djs9x
+ 1171  -bash: kuberctl: command not found
+ 1172  pi@raspberrypi:~ $ kubectl delete pod kubeshark-worker-daemon-set-djs9x
+ 1173  pod "kubeshark-worker-daemon-set-djs9x" deleted
+ 1174  pi@raspberrypi:~ $ kubectl delete pod kubeshark-worker-daemon-set-wjhdh
+ 1175  pod "kubeshark-worker-daemon-set-wjhdh" deleted
+ 1176  pi@raspberrypi:~ $ kubectl delete pod kubeshark-worker-daemon-set-k4gw7
+ 1177  pod "kubeshark-worker-daemon-set-k4gw7" deleted
+ 1178  pi@raspberrypi:~ $ kubectl get pods
+ 1179  NAME                                READY   STATUS              RESTARTS     AGE
+ 1180  kubeshark-worker-daemon-set-mp4nf   0/2     Evicted             0            31s
+ 1181  kubeshark-worker-daemon-set-4hw44   0/2     ContainerCreating   0            4s
+ 1182  kubeshark-worker-daemon-set-74tcp   1/2     CrashLoopBackOff    1 (5s ago)   15s
+ 1183  pi@raspberrypi:~ $ kubectl get all
+ 1184  NAME                                    READY   STATUS             RESTARTS      AGE
+ 1185  pod/kubeshark-worker-daemon-set-mp4nf   0/2     Evicted            0             42s
+ 1186  pod/kubeshark-worker-daemon-set-74tcp   1/2     CrashLoopBackOff   1 (16s ago)   26s
+ 1187  pod/kubeshark-worker-daemon-set-4hw44   1/2     CrashLoopBackOff   1 (6s ago)    15s
+ 1188  NAME                 TYPE        CLUSTER-IP   EXTERNAL-IP   PORT(S)   AGE
+ 1189  service/kubernetes   ClusterIP   10.43.0.1    <none>        443/TCP   74m
+ 1190  NAME                                         DESIRED   CURRENT   READY   UP-TO-DATE   AVAILABLE   NODE SELECTOR   AGE
+ 1191  daemonset.apps/kubeshark-worker-daemon-set   3         3         0       3            0           <none>          31m
+ 1192  pi@raspberrypi:~ $ kubectl get all
+ 1193  NAME                                    READY   STATUS    RESTARTS      AGE
+ 1194  pod/kubeshark-worker-daemon-set-mp4nf   0/2     Evicted   0             54s
+ 1195  pod/kubeshark-worker-daemon-set-74tcp   1/2     Error     2 (28s ago)   38s
+ 1196  pod/kubeshark-worker-daemon-set-4hw44   1/2     Error     2 (18s ago)   27s
+ 1197  NAME                 TYPE        CLUSTER-IP   EXTERNAL-IP   PORT(S)   AGE
+ 1198  service/kubernetes   ClusterIP   10.43.0.1    <none>        443/TCP   75m
+ 1199  NAME                                         DESIRED   CURRENT   READY   UP-TO-DATE   AVAILABLE   NODE SELECTOR   AGE
+ 1200  daemonset.apps/kubeshark-worker-daemon-set   3         3         0       3            0           <none>          31m
+ 1201  pi@raspberrypi:~ $ kubectl get all
+ 1202  NAME                                    READY   STATUS             RESTARTS      AGE
+ 1203  pod/kubeshark-worker-daemon-set-mp4nf   0/2     Evicted            0             56s
+ 1204  pod/kubeshark-worker-daemon-set-4hw44   1/2     Error              2 (20s ago)   29s
+ 1205  pod/kubeshark-worker-daemon-set-74tcp   1/2     CrashLoopBackOff   2 (15s ago)   40s
+ 1206  NAME                 TYPE        CLUSTER-IP   EXTERNAL-IP   PORT(S)   AGE
+ 1207  service/kubernetes   ClusterIP   10.43.0.1    <none>        443/TCP   75m
+ 1208  NAME                                         DESIRED   CURRENT   READY   UP-TO-DATE   AVAILABLE   NODE SELECTOR   AGE
+ 1209  daemonset.apps/kubeshark-worker-daemon-set   3         3         0       3            0           <none>          31m
+ 1210  pi@raspberrypi:~ $ kubectl get all
+ 1211  NAME                                    READY   STATUS             RESTARTS      AGE
+ 1212  pod/kubeshark-worker-daemon-set-mp4nf   0/2     Evicted            0             58s
+ 1213  pod/kubeshark-worker-daemon-set-4hw44   1/2     Error              2 (22s ago)   31s
+ 1214  pod/kubeshark-worker-daemon-set-74tcp   1/2     CrashLoopBackOff   2 (17s ago)   42s
+ 1215  NAME                 TYPE        CLUSTER-IP   EXTERNAL-IP   PORT(S)   AGE
+ 1216  service/kubernetes   ClusterIP   10.43.0.1    <none>        443/TCP   75m
+ 1217  NAME                                         DESIRED   CURRENT   READY   UP-TO-DATE   AVAILABLE   NODE SELECTOR   AGE
+ 1218  daemonset.apps/kubeshark-worker-daemon-set   3         3         0       3            0           <none>          31m
+ 1219  pi@raspberrypi:~ $
+ 1220  sh <(curl -Ls https://kubeshark.co/install)
+ 1221  sudo apt update
+ 1222  sudo apt install snapd
+ 1223  sudo snap install k9s
+ 1224  k9s
+ 1225  sudo k9s
+ 1226  sudo reboot
+ 1227  kubectl proxy
+ 1228  k9s
+ 1229  kube-system   deployment.apps/metrics-server           1/1     1            1           40d
+ 1230  ls
+ 1231  kubectl apply -f dashboard-adminuser.yaml
+ 1232  nano in.yaml
+ 1233  kubectl apply -f in.yaml 
+ 1234  nano in.yaml
+ 1235  kubectl apply -f in.yaml 
+ 1236  sudo install -o root -g root -m 0755 kubectl-convert /usr/local/bin/kubectl-convert
+ 1237  kubectl convert -f dashboard-adminuser.yaml 
+ 1238  kubectl apply -f dashboard-adminuser.yaml
+ 1239  nano dashboard-adminuser.yaml
+ 1240  kubectl apply -f dashboard-adminuser.yaml
+ 1241  nano dashboard-adminuser.yaml
+ 1242  kubectl apply -f dashboard-adminuser.yaml
+ 1243  nano dashboard-adminuser.yaml
+ 1244  kubectl apply -f dashboard-adminuser.yaml
+ 1245  kubectl create namespace agones-system
+ 1246  kubectl apply --server-side -f https://raw.githubusercontent.com/googleforgames/agones/release-1.42.0/install/yaml/install.yaml
+ 1247  kubectl apply -f dashboard-adminuser.yaml
+ 1248  kubectl -nkube-system secret
+ 1249  kubectl -n kube-system secret
+ 1250  kubectl -n kube-system get secret
+ 1251  kubectl -n kube-system describe sh.helm.release.v1.traefik.v1
+ 1252  kubectl -n kube-system describe raspberrys.node-password.k3s
+ 1253  kubectl -n kube-system describe chart-values-traefik
+ 1254  kubectl get pods
+ 1255  cd kubernetes-dashboard/
+ 1256  ls
+ 1257  git clone https://github.com/irsols-devops/kubernetes-dashboard.git
+ 1258  kubectl apply -f ./kubernetes-dashboard/
+ 1259  cd kubernetes-dashboard/
+ 1260  chmod  +x get-dash.sh
+ 1261  ./get-dash.sh
+ 1262  kubectl -n kubernetes-dashboard get secrets/admin-user-secret -o jsonpath="{.data.token}"
+ 1263  kubectl -n kubernetes-dashboard get secrets/admin-usert -o jsonpath="{.data.token}"
+ 1264  kubectl -n kubernetes-dashboard get secrets/admin-user -o jsonpath="{.data.token}"
+ 1265  kubectl create token myapp --duration 10m
+ 1266  kubectl create token nginx --duration 10m
+ 1267  cd ..
+ 1268  kubectl get pods
+ 1269  kubectl -n kubernetes-dashboard get svc
+ 1270  kubectl create token kubernetes-dashboard -n kubernetes-dashboard
+ 1271  ls
+ 1272  kubectl apply -f dashboard-secret.yaml 
+ 1273  kubectl apply -f dashboard-adminuser.yaml
+ 1274  kubectl apply -f dashboard-cluserrole.yaml 
+ 1275  ./get-dash.sh
+ 1276  cd kubernetes-dashboard/
+ 1277  ./get-dash.sh
+ 1278  kubectl -n kubernetes-dashboard get secrets/admin-user-secret -o jsonpath="{.data.token}"
+ 1279  kubectl -n kubernetes-dashboard get secrets/kubernetes-dashboard -o jsonpath="{.data.token}"
+ 1280  kubectl get secret
+ 1281  kubectl get secretes
+ 1282  cd ..
+ 1283  kubectl get all -n kubernetes-dashboard
+ 1284  kubectl edit service/kubernetes-dashboard -n kubernetes-dashboard
+ 1285  kubectl -n kubernetes-dashboard edit svc kubernetes-dashboard
+ 1286  kubectl get all -n kubernetes-dashboard
+ 1287  helm repo add cloudnativeapp https://cloudnativeapp.github.io/charts/curated/
+ 1288  helm install my-sparkoperator cloudnativeapp/sparkoperator --version 0.2.3
+ 1289  kubectl create namespace spark-operator
+ 1290  kubectl create namespace spark-jobs
+ 1291  helm repo add spark-operator
+ 1292  helm repo add spark-operator https://googlecloudplatform.github.io/spark-on-k8s-operator
+ 1293  helm install  spark-operator/spark-operator --
+ 1294  namespace spark-operator --set webhook.enable=true
+ 1295  helm install  spark-operator/spark-operator --namespace spark-operator --set webhook.enable=true
+ 1296  kubectl get sparkapplication -n spark-jobs
+ 1297  kubectl create namespace airflow
+ 1298  git clone -b main  https://github.com/airflow-helm/charts.git
+ 1299  helm upgrade --install airflow charts/airflow -f values.yaml -n airflow
+ 1300  kubectl create serviceaccount spark -n spark-jobs
+ 1301  kubectl create clusterrolebinding spark-role --clusterrole=edit --serviceaccount=spark-jobs:spark --namespace=spark-jobs
+ 1302  helm repo add apache-airflow https://airflow.apache.org
+ 1303  helm upgrade --install airflow apache-airflow/airflow --namespace airflow --create-namespace
+ 1304  helm repo add apache-airflow https://airflow.apache.org
+ 1305  helm upgrade --install airflow apache-airflow/airflow --namespace airflow --create-namespace
+ 1306  helm upgrade airflow apache-airflow/airflow --namespace airflow
+ 1307  sudo reboot
+ 1308  kubectl get nodes
+ 1309  kubectl get all -A
+ 1310  helm upgrade airflow apache-airflow/airflow --namespace airflow
+ 1311  helm repo add apache-airflow https://airflow.apache.org
+ 1312  kubectl get all -A
+ 1313  kubectl delete all --all
+ 1314  kubectl get all -A
+ 1315  kubectl delete all --all -n airflow
+ 1316  kubectl delete "$(kubectl api-resources --namespaced=true --verbs=delete -o name | tr "\n" "," | sed -e 's/,$//')" --all
+ 1317  kubectl get all -A
+ 1318  kubectl delete all --all -n kube-system
+ 1319  kubectl get all -A
+ 1320  kubectl delete all --all -n kubernetes-dashboard
+ 1321  kubectl delete all --all -n agones-system
+ 1322  kubectl get all -A
+ 1323  kubectl get all -Ahelm list -aq
+ 1324  helm list -aq
+ 1325  helm uninstall redis
+ 1326  helm repo list
+ 1327  helm remove apache-airflow
+ 1328  helm repo remove apache-airflow
+ 1329  helm repo remove cloudnativeapp
+ 1330  helm repo list
+ 1331  kubectl get all -A
+ 1332  ls
+ 1333  kubectl apply -f dashboard-adminuser.yaml
+ 1334  cat dashboard-adminuser.yaml
+ 1335  nano dashboard-adminuser.yaml
+ 1336  ls
+ 1337  nano dashboard-adminuser.yaml
+ 1338  nano dashboard-cluserrole.yaml
+ 1339  nano dashboard-secret.yaml
+ 1340  kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/v2.7.0/aio/deploy/recommended.yaml
+ 1341  kubectl get all -A
+ 1342  kubectl proxy
+ 1343  kubectl get pods
+ 1344  kubectl get ns
+ 1345  kubectl delete all --all -n airflow
+ 1346  kubectl get all -A
+ 1347  sudo reboot
+ 1348  kubectl get all -A
+ 1349  kubectl proxy
+ 1350  kubectl get ns
+ 1351  sudo reboot
+ 1352  helm repo add apache-airflow https://airflow.apache.org
+ 1353  helm install airflow apache-airflow/airflow --namespace airflow --create-namespace --debug
+ 1354  kubectl get ns
+ 1355  kubectl delete all --all -n airflow
+ 1356  helm repo add apache-airflow https://airflow.apache.org
+ 1357  helm upgrade --install airflow apache-airflow/airflow --namespace airflow --create-namespace
+ 1358  kubectl get ns
+ 1359  kubectl get all -A
+ 1360  helm upgrade airflow apache-airflow/airflow --namespace airflow
+ 1361  kubectl port-forward svc/airflow-webserver 8080:8080 --namespace airflow
+ 1362  helm show values apache-airflow/airflow >values.yaml
+ 1363  cat values.yaml 
+ 1364  nano value1.yaml
+ 1365  helm upgrade --install airflow apache-airflow/airflow --namespace airflow --create-namespace -f valueq.yaml
+ 1366  helm upgrade --install airflow apache-airflow/airflow --namespace airflow --create-namespace -f value1.yaml
+ 1367  kubectl port-forward svc/airflow-webserver 8080:8080 --namespace airflow
+ 1368  nano value1.yaml
+ 1369  helm upgrade --install airflow apache-airflow/airflow --namespace airflow --create-namespace -f value1.yaml
+ 1370  kubectl port-forward svc/airflow-webserver 8080:8080 --namespace airflow
+ 1371  echo Fernet Key: $(kubectl get secret --namespace airflow airflow-fernet-key -o jsonpath="{.data.fernet-key}" | base64 --decode)
+ 1372  ls
+ 1373  nano value1.yaml
+ 1374  helm upgrade --install airflow apache-airflow/airflow --namespace airflow --create-namespace -f values.yaml
+ 1375  kubectl port-forward svc/airflow-webserver 8080:8080 --namespace airflow
+ 1376  kubectl proxy
+ 1377  kubectl port-forward svc/airflow-webserver 8080:8080 --namespace airflow
+ 1378  helm upgrade --install airflow apache-airflow/airflow --namespace airflow --create-namespace -f values.yaml
+ 1379  kubectl port-forward svc/airflow-webserver 8080:8080 --namespace airflow
+ 1380  kubectl delete pvc -n airflow logs-gta-triggerer-0
+ 1381  kubectl delete pvc -n airflow logs-gta-worker-0
+ 1382  kubectl delete pvc -n airflow redis-db-gta-redis-0
+ 1383  helm upgrade airflow apache-airflow/airflow --namespace airflow
+ 1384  kubectl port-forward svc/airflow-webserver 8080:8080 --namespace airflow
+ 1385  helm delete airflow --namespace airflow
+ 1386  kubectl delete pvc -n airflow logs-gta-triggerer-0
+ 1387  kubectl delete pvc -n airflow logs-gta-worker-0
+ 1388  kubectl delete pvc -n airflow redis-db-gta-redis-0
+ 1389  kubectl get ns
+ 1390  kubectl delete all --all -n airflow
+ 1391  kubectl get ns
+ 1392  kubectl delete ns airflow
+ 1393  kubectl get ns
+ 1394  helm install airflow apache-airflow/airflow --namespace airflow --create-namespace --debug
+ 1395  kubectl port-forward svc/airflow-webserver 8080:8080 --namespace airflow
+ 1396  helm upgrade --install airflow apache-airflow/airflow --namespace airflow --create-namespace -f values.yaml
+ 1397  python3 -c 'import secrets; print(secrets.token_hex(16))'
+ 1398  webserverSecretKey: 51e6e05cb80af835b6528e491f59d6d0
+ 1399  nano value
+ 1400  nano values.yaml
+ 1401  helm upgrade --install airflow apache-airflow/airflow --namespace airflow --create-namespace -f values.yaml
+ 1402  kubectl proxy
+ 1403  sudo snap install snapd
+ 1404  sudo snap install kubefed --classic
+ 1405  sudo kubefwd services -n default
+ 1406  kubectl get ns
+ 1407  kubectl get po -n kube-system
+ 1408  kubectl apply -f - <<EOF
+ 1409  apiVersion: v1
+ 1410  kind: Secret
+ 1411  metadata:
+ 1412    name: console-sa-secret
+ 1413    namespace: minio-operator
+ 1414    annotations:
+ 1415      kubernetes.io/service-account.name: console-sa
+ 1416  type: kubernetes.io/service-account-token
+ 1417  EOF
+ 1418  SA_TOKEN=$(kubectl -n minio-operator  get secret console-sa-secret -o jsonpath="{.data.token}" | base64 --decode)
+ 1419  echo $SA_TOKEN
+ 1420  kubectl apply -f - <<EOF
+ 1421  apiVersion: v1
+ 1422  kind: Secret
+ 1423  metadata:
+ 1424    name: console-sa-secret
+ 1425    namespace: minio-operator
+ 1426    annotations:
+ 1427      kubernetes.io/service-account.name: console-sa
+ 1428  type: kubernetes.io/service-account-token
+ 1429  EOF
+ 1430  SA_TOKEN=$(kubectl -n minio-operator  get secret console-sa-secret -o jsonpath="{.data.token}" | base64 --decode)
+ 1431  echo $SA_TOKEN
+ 1432  kubectl get pods
+ 1433  kubectl get ns
+ 1434  kubectl delete
+ 1435  kubectl get all -A
+ 1436  kubectl delete ns default
+ 1437  kubectl get deployment
+ 1438  kubectl get all -A
+ 1439  kubectl get deployment
+ 1440  kubectl delete deployment minio-console
+ 1441  kubectl delete deployment minio-operator
+ 1442  kubectl get all -A
+ 1443  kubectl get deployment
+ 1444  kubectl get all -A
+ 1445  kubectl get pods
+ 1446  kubectl delete pods minio1-ss-0-0
+ 1447  kubectl delete pods minio1-ss-0-1 minio1-ss-0-2 minio1-ss-0-3
+ 1448  kubectl get pods
+ 1449  k9s
+ 1450  kubectl get pods
+ 1451  kubectl delete pods minio1-ss-0-0
+ 1452  kubectl get pods
+ 1453  kubectl delete all --all -n default 
+ 1454  kubectl get pods
+ 1455  kubectl get all -A
+ 1456  curl https://raw.githubusercontent.com/minio/docs/master/source/extra/examples/minio-dev.yaml -O
+ 1457  kubectl apply -f minio-dev.yaml
+ 1458  kubectl get pods -n minio-dev
+ 1459  k9s
+ 1460  kubectl port-forward pod/minio 9000 9090 -n minio-dev
+ 1461  kubectl get pods -n minio-dev
+ 1462  kubectl delete minio
+ 1463  kubectl delete deployment minio
+ 1464  kubectl delete deployment minio-dev
+ 1465  kubectl get ns
+ 1466  kubectl delete ns minio-dev
+ 1467  kubectl get pods -n minio-dev
+ 1468  kubectl get nodes
+ 1469  kubectl get ns
+ 1470  wget https://dl.min.io/server/minio/release/linux-amd64/archive/minio-20240716234641.0.0-1.x86_64.rpm -O minio.rpm
+ 1471  sudo dnf install minio.rpm
+ 1472  kubectl apply -f https://raw.githubusercontent.com/minio/docs/master/source/extra/examples/minio-dev.yaml
+ 1473  kubectl get pods -n minio-dev
+ 1474  kubectl delete ns minio-dev
+ 1475  kubectl get pods -n minio-dev
+ 1476  wget https://dl.min.io/server/minio/release/linux-amd64/archive/minio-20240716234641.0.0-1.x86_64.rpm -O minio.rpm
+ 1477  helm repo add minio-operator https://operator.min.io
+ 1478  helm search repo minio-operator
+ 1479  helm install   --namespace minio-operator   --create-namespace   operator minio-operator/operator
+ 1480  helm install   --namespace minio-operator   --create-namespace  operator minio-operator/minio-operator
+ 1481  helm install   --namespace minio-operator1   --create-namespace  operator minio-operator/minio-operator
+ 1482  kubectl apply -k "github.com/minio/operator?ref=v5.0.15"
+ 1483  kubectl get pods -n minio-operator
+ 1484  kubectl get all -n minio-operator
+ 1485  kubectl port-forward svc/console -n minio-operator 9090:9090
+ 1486  kubectl apply -k "github.com/minio/operator?ref=v5.0.15"
+ 1487  kubectl port-forward svc/console -n minio-operator 9090:9090
+ 1488  k9s
+ 1489  kubectl get pods -n minio-operator
+ 1490  curl https://raw.githubusercontent.com/minio/docs/master/source/extra/examples/minio-dev.yaml -O
+ 1491  kubectl apply -f minio-dev.yaml
+ 1492  kubectl get pods -n minio-operator
+ 1493  kubectl get pods -n minio-dev
+ 1494  kubectl delete pods -n minio-dev
+ 1495  kubectl delete pods -n minio
+ 1496  kubectl delete pods minio
+ 1497  kubectl get pods -n minio-dev
+ 1498  kubectl get ns
+ 1499  kubectl delete ns minio-dev
+ 1500  kubectl get ns
+ 1501  kubectl get pods
+ 1502  kubectl delete ns minio-dev
+ 1503  kubectl get ns
+ 1504  kubectl delete ns minio-operator
+ 1505  kubectl get svc
+ 1506  kubectl delete svc minio
+ 1507  kubectl delete svc minio-hl
+ 1508  kubectl delete svc minio1-console
+ 1509  kubectl delete svc minio1-hl
+ 1510  kubectl get svc
+ 1511  kubectl get ns
+ 1512  kubectl get po
+ 1513  kubectl delete pods minio1-ss-0-0 minio1-ss-0-1 minio1-ss-0-2 minio1-ss-0-3
+ 1514  kubectl get po
+ 1515  kubectl get ns
+ 1516  kubectl get all -A
+ 1517  kubectl delete all --all -n default
+ 1518  kubectl get svc
+ 1519  kubectl get ns
+ 1520  kubectl get po
+ 1521  helm repo add spark-operator https://googlecloudplatform.github.io/spark-on-k8s-operator
+ 1522  helm repo add spark-operator https://kubeflow.github.io/spark-operator
+ 1523  helm repo update
+ 1524  helm repo list
+ 1525  helm search repo spark-operator
+ 1526  helm install spark-operator spark-operator/spark-operator
+ 1527  kubectl get ns
+ 1528  k9s
+ 1529  helm uninstall spark-operator 
+ 1530  k9s
+ 1531  helm install spark-operator spark-operator/spark-operator
+ 1532  nano sp.yaml
+ 1533  helm uninstall spark-operator
+ 1534  helm install spark-operator spark-operator/spark-operator     --namespace spark-operator     --create-namespace
+ 1535  ls
+ 1536  kubectl apply -f sp.yaml
+ 1537  kubectl describe sparkapplication --namespace=spark-operator
+ 1538  k9s
+ 1539  helm install spark-operator spark-operator/spark-operator     --namespace spark-operator     --create-namespace
+ 1540  helm uninstall spark-operator
+ 1541  kubectl get ns
+ 1542  kubectl delete ns spark-operator
+ 1543  helm install spark-operator spark-operator/spark-operator     --namespace spark-operator     --create-namespace
+ 1544  k9s
+ 1545  kubectl cluster-info
+ 1546  kubectl proxy
+ 1547  kubectl get ns
+ 1548  k9s
+ 1549  oc get pods
+ 1550  kubectl get pods
+ 1551  kubectl get ns
+ 1552  kubectl get po -n spark-operator
+ 1553  kubectl logs -f spark-operator-76ff4d5787-l5gpw
+ 1554  nano sparkpi.yaml
+ 1555  kubectl apply -f sparkpi.yaml
+ 1556  nano sparkpi.yaml
+ 1557  kubectl apply -f sparkpi.yaml
+ 1558  helm uninstall spark-operator
+ 1559  kubectl delete ns spark-operator
+ 1560  helm repo add spark-operator https://googlecloudplatform.github.io/spark-on-k8s-operator
+ 1561  helm install my-release spark-operator/spark-operator --namespace spark-operator --set webhook.enable=true --set image.repository=openlake/spark-operator --set image.tag=3.3.1 --create-namespace
+ 1562  kubectl get pods -n spark-operator
+ 1563  nano sparkpi.yaml 
+ 1564  kubectl apply -f sparkpi.yaml
+ 1565  nano sparkpi.yaml 
+ 1566  kubectl apply -f sparkpi.yaml
+ 1567  nano spark-pi.yaml
+ 1568  kubectl apply -f spark-pi.yaml
+ 1569  nano spark-pi.yaml
+ 1570  kubectl apply -f spark-pi.yaml
+ 1571  nano spark-pi.yaml
+ 1572  kubectl apply -f spark-pi.yaml
+ 1573  rm spark-pi.yaml
+ 1574  nano spark-pi.yaml
+ 1575  kubectl apply -f spark-pi.yaml
+ 1576  apiVersion: "sparkoperator.k8s.io/v1beta2"
+ 1577  kind: SparkApplication
+ 1578  metadata:
+ 1579  spec:
+ 1580  kubectl get sparkapplications -n spark-operator
+ 1581  kubectl get pods -n spark-operator
+ 1582  kubectl get sparkapplications -n spark-operator
+ 1583  nano spark.yaml
+ 1584  kubectl apply -f spark.yaml
+ 1585  kubectl get pods
+ 1586  kubectl get pods -n spark-operatior
+ 1587  kubectl get pods -n spark-operator
+ 1588  kubectl logs pyspark-pi-driver -n spark-operator
+ 1589  kubectl get sparkapplications -n spark-operator
+ 1590  kubectl logs pyspark-pi -n spark-operator
+ 1591  kubectl delete ns spark-operator
+ 1592  helm repo add spark-operator https://googlecloudplatform.github.io/spark-on-k8s-operator
+ 1593  helm install my-release spark-operator/spark-operator --namespace spark-operator --set webhook.enable=true --set image.repository=openlake/spark-operator --set image.tag=3.3.1 --create-namespace
+ 1594  kubectl get pods -n spark-operator
+ 1595  kubectl get ns
+ 1596  kubectl get pods -n spark-operator
+ 1597  kubectl delete ns spark-operator
+ 1598  helm install spark-operator spark-operator/spark-operator     --namespace spark-operator     --create-namespace
+ 1599  kubectl port-forward svc/spark-minio-ui-svc 4040:4040 -n spark-operator
+ 1600  kubectl get svc
+ 1601  nano spark1.yaml
+ 1602  kubectl apply -f spark1.yaml 
+ 1603  kubectl get sparkapplications -n spark-operator
+ 1604  kubectl logs pyspark-pi-driver -n spark-operator
+ 1605  kubectl logs pyspark-pi -n spark-operator
+ 1606  kubectl logs pyspark-pi
+ 1607  kubectl logs pyspark-pi -n spark-operator
+ 1608  kubectl get svc
+ 1609  kubectl get ns
+ 1610  kubectl delete ns spark-operator
+ 1611  k9s
+ 1612  kubectl get pods -n kube-system
+ 1613  kubectl get all -n minio-operator
+ 1614  kubectl get secret/console-sa-secret -n minio-operator -o json | jq -r ".data.token" | base64 -d
+ 1615  SA_TOKEN=$(kubectl -n minio-operator  get secret console-sa-secret -o jsonpath="{.data.token}" | base64 --decode)
+ 1616  echo $SA_TOKEN
+ 1617  helm install spark-operator spark-operator/spark-operator     --namespace spark-operator     --create-namespace
+ 1618  kubectl -n spark-operator port-forward svc/spark-pi-ui-svc 4040:4040
+ 1619  ls
+ 1620  nano spark1.yaml
+ 1621  kubectl apply -f spark1.yaml
+ 1622  kubectl -n spark-operator port-forward svc/spark-pi-ui-svc 4040:4040
+ 1623  kubectl get svc
+ 1624  kubectl get pods -n spark-operator
+ 1625  nano spark1.yaml
+ 1626  rm spark1.yaml
+ 1627  ls sp
+ 1628  ls
+ 1629  rm spark.yaml
+ 1630  rm sparkpi.yaml
+ 1631  rm spark-pi.yaml
+ 1632  nano sparkpi.yaml
+ 1633  kubectl apply -f sparkpi.yaml
+ 1634  kubectl get sparkapplications -n spark-operator
+ 1635  kubectl create serviceaccount spark
+ 1636  kubectl create clusterrolebinding spark-role --clusterrole=edit --serviceaccount=default:spark --namespace=default
+ 1637  kubectl get sparkapplications -n spark-operator
+ 1638  kubectl create serviceaccount spark
+ 1639  kubectl get sparkapplications -n spark-operator
+ 1640  nano sparka.yaml
+ 1641  kubectl apply -f sparka.yaml
+ 1642  sudo apt install midori
+ 1643  sudo apt install falkon
+ 1644  sudo apt-get install eric
+ 1645  sudo snap install viper-browser
+ 1646  sudo apt update
+ 1647  sudo apt install snapd
+ 1648  sudo snap install viper-browser
+ 1649  sudo adduser pi
+ 1650  sudo adduser xrdp ssl-cert
+ 1651  sudo nano /etc/X11/xrdp/xorg.conf
+ 1652  chromium-browser --args --disable-gpu-compositing
+ 1653  firefox --safe-mode
+ 1654  sudo nano /etc/X11/xrdp/xorg.conf
+ 1655  chromium-browser --args --disable-gpu-compositing
+ 1656  sudo pacman -R geary
+ 1657  sudo pacman -R falkon
+ 1658  dpkg --list
+ 1659  sudo snap uninstall viper-browser
+ 1660  sudo apt uninstall falkon
+ 1661  dpkg --list
+ 1662  sudo usermod -aG ssl-cert pi
+ 1663  vim /etc/X11/xrdp/xorg.conf
+ 1664  systemctl restart xrdp
+ 1665  cd /etc/
+ 1666  ls
+ 1667  cd /etc/X11/xrdp/xorg.conf
+ 1668  cd /etc/X11/xrdp/
+ 1669  ls
+ 1670  nano /etc/X11/xrdp/xorg.conf
+ 1671  sudo nano /etc/X11/xrdp/xorg.conf
+ 1672  systemctl restart xrdp
+ 1673  sudo reboot
+ 1674  sudo raspi-config
+ 1675  code --args --disable-gpu-compositing
+ 1676  --disable-gpu
+ 1677  --disable-gpu-compositing
+ 1678  code.desktop --args --disable-gpu-compositing
+ 1679  code --args --disable-gpu-compositing
+ 1680  python3 -m venv .venv
+ 1681  ls
+ 1682  /bin/python /home/pi/.vscode/extensions/ms-python.python-2024.10.0-linux-arm64/python_files/printEnvVariablesToFile.py /home/pi/.vscode/extensions/ms-python.python-2024.10.0-linux-arm64/python_files/deactivate/bash/envVars.txt
+ 1683  venv /home/pi/Code/venv
+ 1684  python -m venv 
+ 1685  python -m venv project1
+ 1686  ls
+ 1687  cd project1/
+ 1688  ls
+ 1689  cd ..
+ 1690  cd project1/
+ 1691  source /home/pi/Code/project1/bin/activate
+ 1692  kubectl proxy
+ 1693  k9s
+ 1694  kubectl get pod -n kube-system 
+ 1695  kubectl get delete pod svclb-minio-62007bb7-5bbx4
+ 1696  kubectl delete pod svclb-minio-62007bb7-5bbx4
+ 1697  kubectl delete pod svclb-minio-62007bb7-5bbx4 -n kube-system
+ 1698  kubectl get pod -n kube-system 
+ 1699  kubectl delete pod svclb-minio-62007bb7-5bbx4 -n kube-system
+ 1700  kubectl delete pod -f svclb-minio-62007bb7-jqzns -n kube-system
+ 1701  kubectl get pod -n kube-system 
+ 1702  kubectl port-forward --address 0.0.0.0 pod/spark-release-master-0
+ 1703  kubectl port-forward --address 0.0.0.0 pod/spark-release-master-0 30010:8080
+ 1704  /bin/python /home/pi/.vscode/extensions/ms-python.python-2024.10.0-linux-arm64/python_files/printEnvVariablesToFile.py /home/pi/.vscode/extensions/ms-python.python-2024.10.0-linux-arm64/python_files/deactivate/bash/envVars.txt
+ 1705  ls
+ 1706  ls -lhrt
+ 1707  python3 -m venv .venv
+ 1708  ls -lhrt
+ 1709  python3 -m venv .venv
+ 1710  ls
+ 1711  mkdir venv
+ 1712  ls
+ 1713  cd venv/
+ 1714  python3 -m venv .venv
+ 1715  ls
+ 1716  source .venv/bin/activate
+ 1717  ls
+ 1718  code .
+ 1719  ls
+ 1720  /bin/python /home/pi/.vscode/extensions/ms-python.python-2024.10.0-linux-arm64/python_files/printEnvVariablesToFile.py /home/pi/.vscode/extensions/ms-python.python-2024.10.0-linux-arm64/python_files/deactivate/bash/envVars.txt
+ 1721  kubectl -n kubernetes-dashboard get secrets/admin-user-secret -o jsonpath="{.data.token}"
+ 1722  EOF
+ 1723  SA_TOKEN=$(kubectl -n minio-operator  get secret console-sa-secret -o jsonpath="{.data.token}" | base64 --decode)
+ 1724  echo $SA_TOKEN
+ 1725  helm repo add spark-operator https://googlecloudplatform.github.io/spark-on-k8s-operator
+ 1726  helm install my-release spark-operator/spark-operator --namespace spark-operator --set webhook.enable=true --set image.repository=openlake/spark-operator --set image.tag=3.3.1 --create-namespace
+ 1727  kubectl get pods -n spark-operator
+ 1728  helm show values apache-airflow/airflow >v24.yaml
+ 1729  cat v24.yaml
+ 1730  kubectl port-forward svc/console -n minio-operator 9090:9090
+ 1731  history
+ 1732  history > history 24
+ 1733  helm search repo minio-operator
+ 1734  kubectl get all --namespace minio-operator
+ 1735  ls
+ 1736  kubectl get secret/console-sa-secret -n minio-operator -o json | jq -r ".data.token" | base64 -d
+ 1737  kubectl get all -n minio-operator
+ 1738  ls
+ 1739  kubectl get pods
+ 1740  kubectl get ns
+ 1741  kubectl delete ns minio-operator
+ 1742  kubectl delete ns spark-operator
+ 1743  kubectl get ns
+ 1744  kubectl get kube-system
+ 1745  kubectl delete 
+ 1746  kuectl delete all --all -n kube-system
+ 1747  kubectl delete all --all -n kube-system
+ 1748  kubectl get ns
+ 1749  kubectl delete all --all -n d
+ 1750  kubectl delete all --all -n dd
+ 1751  kubectl get ns
+ 1752  kubectl delete ns d
+ 1753  kubectl get ns
+ 1754  kubectl delete ns dd
+ 1755  sudo reboot 
+ 1756  echo Fernet Key: $(kubectl get secret --namespace airflow airflow-fernet-key -o jsonpath="{.data.fernet-key}"
+ 1757  echo Fernet Key: $(kubectl get secret --namespace airflow airflow-fernet-key -o jsonpath="{.data.fernet-key}" | base64 --decode)
+ 1758  ls
+ 1759  cat values1.yaml
+ 1760  ls
+ 1761  cat value1.yaml
+ 1762  echo Fernet Key: $(kubectl get secret --namespace airflow airflow-fernet-key -o jsonpath="{.data.fernet-key}" | base64 --decode)
+ 1763  cat values.yaml
+ 1764  history >his24
+ 1765  python3 -c 'import secrets; print(secrets.token_hex(16))'
+ 1766  k9s
+ 1767  helm repo add minio-operator https://operator.min.io
+ 1768  helm search repo minio-operator
+ 1769  helm install   --namespace minio-operator   --create-namespace   operator minio-operator/operator
+ 1770  helm install   --namespace MINIO_TENANT_NAMESPACE   --create-namespace   MINIO_TENANT_NAME minio-operator/tenant
+ 1771  helm install   --namespace minio-operator   --create-namespace   operator minio-operator/operator
+ 1772  helm install   --namespace minio-operator   --create-namespace   minio-operator minio-operator/operator
+ 1773  helm install   --namespace minio-operator   --create-namespace   minio-operator minio-operator/minio-operator
+ 1774  helm install   --namespace minio-operator   --create-namespace   operator minio-operator/minio-operator
+ 1775  helm install   --namespace minio-operator   --create-namespace   minio-operator minio-operator/operator
+ 1776  helm install   --namespace minio-operator   --create-namespace   minio-operator minio-operator/minio-operator
+ 1777  kubectl get ns
+ 1778  helm install   --namespace minio-operator   --create-namespace   minio-operator minio-operator/minio-operator
+ 1779  helm install my-release spark-operator/spark-operator --namespace spark-operator --set webhook.enable=true --set image.repository=openlake/spark-operator --set image.tag=3.3.1 --create-namespace
+ 1780  kubectl get pods -n spark-operator
+ 1781  kubectl port-forward svc/console -n minio-operator 9090:9090
+ 1782  kubectl apply -k "github.com/minio/operator?ref=v5.0.15"
+ 1783  kubectl get pods -n minio-operator
+ 1784  kubectl get all -n minio-operator
+ 1785  kubectl port-forward svc/console -n minio-operator 9090:9090
+ 1786  kubectl get all -n minio-operator
+ 1787  kubectl get ns
+ 1788  kubectl delete all --all ns default
+ 1789  kubectl delete all --all -n default
+ 1790  kubectl delete -n kube-system
+ 1791  kubectl delete -ns kube-system
+ 1792  kubectl get ns
+ 1793  kubectl delete -n kube-system
+ 1794  kubectl delete -ns kube-system
+ 1795  kubectl delete all --all -n kube-system
+ 1796  kubectl get ns
+ 1797  kubectl delete -ns spark-operator
+ 1798  kubectl delete namespace spark-operator
+ 1799  helm repo add bitnami-repo https://charts.bitnami.com/bitnami
+ 1800  helm install spark-release bitnami-repo/spark
+ 1801  kubectl port-forward --address 0.0.0.0 pod/spark-release-master-0 30010:8080
+ 1802  kubectl get ns
+ 1803  kubectl get ns | grep -i terminating
+ 1804  kubectl get apiservices |grep -ifalse
+ 1805  kubectl get apiservice
+ 1806  kubectl get apiservices |grep -i False
+ 1807  kubectl delete apiservice v1beta1.metrics.k8s.io
+ 1808  kubectl get ns
+ 1809  kubectl get ns |grep - terminating
+ 1810  kubectl get ns |grep -i terminating
+ 1811  kubectl get ns
+ 1812  helm install spark-release bitnami-repo/spark
+ 1813  helm upgrade --install
+ 1814  helm repo list
+ 1815  helm delete bitnami-repo
+ 1816  helm remove repo bitnami-repo
+ 1817  helm upgrade --install
+ 1818  helm install spark-release bitnami-repo/spark
+ 1819  sudo reboot
+ 1820  kubectl get ns
+ 1821  k9s
+ 1822  kubectl apply -f - <<EOF
+ 1823  apiVersion: v1
+ 1824  kind: Secret
+ 1825  metadata:
+ 1826    name: console-sa-secret
+ 1827    namespace: minio-operator
+ 1828    annotations:
+ 1829      kubernetes.io/service-account.name: console-sa
+ 1830  type: kubernetes.io/service-account-token
+ 1831  EOF
+ 1832  SA_TOKEN=$(kubectl -n minio-operator  get secret console-sa-secret -o jsonpath="{.data.token}" | base64 --decode)
+ 1833  echo $SA_TOKEN
+ 1834  k9s
+ 1835  kubectl proxy
+ 1836  kubectl get secret admin-user -n kubernetes-dashboard -o jsonpath={".data.token"} | base64 -d
+ 1837  ls
+ 1838  /bin/python /home/pi/.vscode/extensions/ms-python.python-2024.10.0-linux-arm64/python_files/printEnvVariablesToFile.py /home/pi/.vscode/extensions/ms-python.python-2024.10.0-linux-arm64/python_files/deactivate/bash/envVars.txt
+ 1839  cd /home/pi/kube
+ 1840  python3 -m venv airflow
+ 1841  pwd
+ 1842  source home/pi/kube/airflow/bin/activate
+ 1843  source /home/pi/kube/airflow/bin/activate
+ 1844  code .
+ 1845  ls
+ 1846  cd airflow/
+ 1847  ls
+ 1848  code .
+ 1849  mkdir values.yaml
+ 1850  nano values.yaml
+ 1851  echo Fernet Key: $(kubectl get secret --namespace airflow airflow-fernet-key -o jsonpath="{.data.fernet-key}" | base64 --decode)
+ 1852  nano values.yaml
+ 1853  helm upgrade --install airflow apache-airflow/airflow --namespace airflow --create-namespace -f values.yaml
+ 1854  nano values.yaml
+ 1855  helm upgrade --install airflow apache-airflow/airflow --namespace airflow --create-namespace -f values.yaml
+ 1856  k9s
+ 1857  kubectl get pod -n kube-system
+ 1858  helm repo
+ 1859  helm repo list
+ 1860  helm repo remove bitnami-repo
+ 1861  helm repo add bitnami-repo https://charts.bitnami.com/bitnami
+ 1862  helm install spark-release bitnami-repo/spark
+ 1863  helm install spark-release1 bitnami-repo/spark
+ 1864  kubectl get ns
+ 1865  kubectl get pods
+ 1866  kubectl get pods -n default
+ 1867  kubectl get pods -n airflow
+ 1868  k9s
+ 1869  cd /home/pi/kube/airflow/
+ 1870  ls
+ 1871  helm upgrade --install airflow apache-airflow/airflow --namespace airflow --create-namespace -f values.yaml
+ 1872  git remote add origin https://github.com/Sonu-Sukralia/airflowpy.git
+ 1873  git branch -M main
+ 1874  git push -u origin main
+ 1875  echo "# airflowpy" >> README.md
+ 1876  git init
+ 1877  git add README.md
+ 1878  git commit -m "first commit"
+ 1879  git branch -M main
+ 1880  git remote add origin https://github.com/Sonu-Sukralia/airflowpy.git
+ 1881  git push -u origin main
+ 1882  git login
+ 1883  github login
+ 1884  git remote add origin https://github.com/Sonu-Sukralia/airflowpy.git
+ 1885  git branch -M main
+ 1886  git push -u origin main
+ 1887  git remote add origin https://github.com/Sonu-Sukralia/airflowpy.git
+ 1888  ga dags/
+ 1889  gst
+ 1890* gi
+ 1891  git init
+ 1892  git remote add origin https://github.com/Sonu-Sukralia/airflowpy.git
+ 1893  git add .
+ 1894  git status
+ 1895  git commit -m "fist commit"
+ 1896  git init
+ 1897  git status
+ 1898  git add .
+ 1899  git commit -m "fist commit"
+ 1900  git config --global user.email "sonukr023@gmail.com"
+ 1901  git config --global user.name "sonu"
+ 1902  git config --list
+ 1903  git commit -m "fist commit"
+ 1904  git push -u origin main
+ 1905  ga dags/
+ 1906  gst
+ 1907  git push -u origin main
+ 1908  git add .
+ 1909  git commit -m "sec commit"
+ 1910  git push -u origin main
+ 1911  git add .
+ 1912  git commit -m "sc commit"
+ 1913  git push -u origin main
+ 1914  helm upgrade --install airflow apache-airflow/airflow --namespace airflow --create-namespace -f values.yaml
+ 1915  /usr/bin/vcgencmd measure_temp
+ 1916  git add .
+ 1917  git commit -m "sdc commit"
+ 1918  git push -u origin main
+ 1919  k9s
+ 1920  /bin/python /home/pi/.vscode/extensions/ms-python.python-2024.10.0-linux-arm64/python_files/printEnvVariablesToFile.py /home/pi/.vscode/extensions/ms-python.python-2024.10.0-linux-arm64/python_files/deactivate/bash/envVars.txt
+ 1921  ls
+ 1922  cat values1.yaml
+ 1923  cat values
+ 1924  cat values.yaml
+ 1925  helm upgrade --install airflow apache-airflow/airflow --namespace airflow --create-namespace -f value1.yaml
+ 1926  kubectl -n airflow rollout restart deploy
+ 1927  helm upgrade --install airflow apache-airflow/airflow --namespace airflow --create-namespace -f value1.yaml
+ 1928  kubectl get ns
+ 1929  kubectl delete namespace airflow
+ 1930  kubectl get ns
+ 1931  kubectl delete namespace airflow
+ 1932  kubectl get ns |grep -i terminating
+ 1933  kubectl get apiservice |grep false
+ 1934  kubectl get apiservice
+ 1935  kubectl get apiservice |grep -i False
+ 1936  kubectl get ns |grep -i terminating
+ 1937  kubectl get apiservice |grep -ifalse
+ 1938  kubectl get apiservice
+ 1939  kubectl get apiservice |grep -i False
+ 1940  kubectl get ns
+ 1941  kubectl -n airflow rollout restart deploy
+ 1942  kubectl get ns
+ 1943  kubectl get ns |grep -i terminating
+ 1944  kubectl get apiservice |grep -i False
+ 1945  kubectl get ns |grep -i terminating
+ 1946  kubectl get apiservice |grep false
+ 1947  kubectl get apiservice |grep -ifalse
+ 1948  kubectl get apiservices |grep -ifalse
+ 1949  kubectl get apiservice
+ 1950  kubectl get apiservice |grep -i False
+ 1951  kubectl get ns
+ 1952* helm upgrade --install airflow apache-airflow/airflow --namespace airflow --create-namespace -f values.yaml
+ 1953  cd code/
+ 1954  cd Code/
+ 1955  ls
+ 1956  cd kube/
+ 1957  ls
+ 1958  cd airflow/
+ 1959  ls
+ 1960  history > aug24git
