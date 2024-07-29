@@ -1,5 +1,5 @@
-fernetKey: N3dGR0hnZ2o3TVZtWDMzTjRiM3JDclEzM3JLZE52bjM=
-webserverSecretKey: 8a2a2e89877ddd8cc7351f9b4d96461c
+fernetKey: RXQzVFZsY3hXNFE1TGJnMTdmRlkzaXJQb1dEN2ZGTFY=
+webserverSecretKey: 4615fc5d173f2f42f624b1f68cd9b616
 executor: "KubernetesExecutor"
 
 dags:
