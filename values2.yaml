@@ -1,5 +1,5 @@
-fernetKey: RXQzVFZsY3hXNFE1TGJnMTdmRlkzaXJQb1dEN2ZGTFY=
-webserverSecretKey: 4615fc5d173f2f42f624b1f68cd9b616
+fernetKey: OTY3aktsMkM2OU0yczdvSWd5bUhLSElUZVhVTzVTd2U=
+webserverSecretKey: OTY3aktsMkM2OU0yczdvSWd5bUhLSElUZVhVTzVTd2U=
 executor: "KubernetesExecutor"
 
 dags:
@@ -11,3 +11,4 @@ dags:
     depth: 1
     maxFailures: 0
     subPath: "dags"
+
