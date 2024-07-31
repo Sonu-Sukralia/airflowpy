@@ -1,5 +1,5 @@
-fernetKey: MUphdFVnYkd0Ym1sSUtOTzhGUkV2UUxxdWx4Y2ZRYm4=
-webserverSecretKey: 2a6b6a2577bc95a59d8baa184a2e5bbc
+fernetKey: RWNlVHdqekhkZzcxazl2ZU40TEoxT3FFcUYwN1pST0U=
+webserverSecretKey: fdbc36c588a0b48be5d138eb3b3d6b61
 executor: "KubernetesExecutor"
 
 dags:
@@ -9,5 +9,5 @@ dags:
     branch: main
     rev: HEAD
     depth: 1
-    mazFailures: 0
+    maxFailures: 0
     subPath: "dags"
