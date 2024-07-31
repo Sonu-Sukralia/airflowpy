@@ -4,7 +4,7 @@ from datetime import datetime, timedelta
 
 default_args = {
     'owner': 'datamasterylab.com',
-    'start_date': datetime(2024, 7, 28),
+    'start_date': datetime(2024, 7, 31),
     'catchup': True
 }
 

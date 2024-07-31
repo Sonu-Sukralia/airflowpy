@@ -5,7 +5,7 @@ from datetime import datetime
 #Define default arguments
 default_args = {
  'owner': 'your_name',
-'start_date': datetime(2024, 7, 28),
+'start_date': datetime(2024, 7, 31),
     'catchup': True
 }
 
